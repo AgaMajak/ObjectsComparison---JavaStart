@@ -1,10 +1,10 @@
 import java.util.Objects;
 
 public class Animal {
-    String species;
-    double weight;
+    private final String species;
+    private final double weight;
 
-    public Animal(String species, double weight) {
+    Animal(String species, double weight) {
         this.species = species;
         this.weight = weight;
     }
@@ -21,5 +21,13 @@ public class Animal {
     @Override
     public int hashCode() {
         return Objects.hash(species, weight);
+    }
+
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "gatunek='" + species + '\'' +
+                ", waga=" + weight +
+                "kg}";
     }
 }

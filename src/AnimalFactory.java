@@ -2,8 +2,10 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class AnimalFactory {
+    private final Animal[] animals = new Animal[3];
+    private int animalsIndex = 0;
 
-    public Animal createAnimal() {
+    private Animal createAnimal() {
         Scanner scan = new Scanner(System.in);
         scan.useLocale(Locale.US);
         System.out.print("Podaj gatunek zwierzęcia: ");
@@ -11,11 +13,31 @@ public class AnimalFactory {
         System.out.print("Podaj wagę zwierzęcia (w kilogramach): ");
         double weight = scan.nextDouble();
         scan.nextLine();
-        Animal animal = new Animal(species, weight);
-        return animal;
+        return new Animal(species, weight);
     }
 
-    Animal createAndCompareAnimal(Animal[] animals){
+    void createAndCompareAnimal() {
+        int i = 0;
+        while (animals.length > i) {
+            Animal animal = createAnimal();
+            if (animalsIndex == 0) {
+                animals[animalsIndex] = animal;
+                animalsIndex++;
+            } else if (animalsIndex == 1 && !(animal.equals(animals[0]))) {
+                animals[animalsIndex] = animal;
+                animalsIndex++;
+            } else if (animalsIndex == 2 && !(animal.equals(animals[0])) && !(animal.equals(animals[1]))) {
+                animals[animalsIndex] = animal;
+                animalsIndex++;
+            } else {
+                System.out.println("Dane zwierząt się powtarzają! Podaj nowe zwierzę.");
+                continue;
+            }
+            i++;
+        }
+        for (Animal animal : animals) {
+            System.out.println(animal);
+        }
 
     }
 }
