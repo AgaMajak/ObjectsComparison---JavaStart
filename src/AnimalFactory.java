@@ -14,5 +14,9 @@ public class AnimalFactory {
         Animal animal = new Animal(species, weight);
         return animal;
     }
+
+    Animal createAndCompareAnimal(Animal[] animals){
+
+    }
 }
 
