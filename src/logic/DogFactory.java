@@ -1,3 +1,7 @@
+package logic;
+
+import data.Dog;
+
 import java.util.Scanner;
 
 public class DogFactory {
@@ -9,18 +13,18 @@ public class DogFactory {
         System.out.print("Podaj imię: ");
         String name = scan.nextLine();
         System.out.print("Podaj wiek: ");
-        double age = scan.nextInt();
+        int age = scan.nextInt();
         scan.nextLine();
         return new Dog(name, age);
     }
 
-    void createAndCompareAnimal() {
+    public void createAndCompareAnimal() {
         int i = 0;
         while (dogs.length > i) {
             Dog dog = createAnimal();
             if (dogsIndex == 0) {
                 dogs[dogsIndex] = dog;
-            } else if (dogsIndex == 1 && !(dog.equals(dogs[0]))){
+            } else if (dogsIndex == 1 && !(dog.equals(dogs[0]))) {
                 dogs[dogsIndex] = dog;
             } else if (dogsIndex == 2 && !(dog.equals(dogs[0])) && !(dog.equals(dogs[1]))) {
                 dogs[dogsIndex] = dog;

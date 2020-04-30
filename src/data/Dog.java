@@ -1,10 +1,12 @@
+package data;
+
 import java.util.Objects;
 
 public class Dog {
-    private String name;
-    private double age;
+    private final String name;
+    private final int age;
 
-    Dog(String name, double age) {
+    public Dog(String name, int age) {
         this.name = name;
         this.age = age;
     }
@@ -14,7 +16,7 @@ public class Dog {
         if (this == o) return true;
         if (!(o instanceof Dog)) return false;
         Dog dog = (Dog) o;
-        return Double.compare(dog.age, age) == 0 &&
+        return age == dog.age &&
                 Objects.equals(name, dog.name);
     }
 
@@ -26,8 +28,8 @@ public class Dog {
     @Override
     public String toString() {
         return "Animal{" +
-                "gatunek='" + name + '\'' +
-                ", waga=" + age +
-                "kg}";
+                "Imię='" + name + '\'' +
+                ", wiek=" + age +
+                '}';
     }
 }
