@@ -18,19 +18,24 @@ public class DogFactory {
         return new Dog(name, age);
     }
 
+    private boolean checkIfExists(Dog[] dogs, Dog dog){
+        for (int j = 0; j < dogsIndex; j++) {
+            if (dogs[j].equals(dog)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void createAndCompareAnimal() {
         int i = 0;
         while (dogs.length > i) {
             Dog dog = createAnimal();
-            if (dogsIndex == 0) {
-                dogs[dogsIndex] = dog;
-            } else if (dogsIndex == 1 && !(dog.equals(dogs[0]))) {
-                dogs[dogsIndex] = dog;
-            } else if (dogsIndex == 2 && !(dog.equals(dogs[0])) && !(dog.equals(dogs[1]))) {
-                dogs[dogsIndex] = dog;
-            } else {
+            if (checkIfExists(dogs,dog)) {
                 System.out.println("Dane psów się powtarzają! Podaj informacje dotyczące nowego psa.");
                 continue;
+            } else{
+                dogs[dogsIndex] = dog;
             }
             dogsIndex++;
             i++;
@@ -38,7 +43,5 @@ public class DogFactory {
         for (Dog dog : dogs) {
             System.out.println(dog);
         }
-
     }
 }
-
